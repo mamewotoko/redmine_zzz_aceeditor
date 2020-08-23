@@ -36,7 +36,7 @@ module RedmineAceEditor
             textarea.val(editor.getSession().getValue());
             });
 //              var editor = ace.edit("#{field_id}");
-            editor.setTheme("ace/theme/twilight");
+//            editor.setTheme("ace/theme/twilight");
             editor.setKeyboardHandler("ace/keyboard/emacs");
             editor.session.setMode("ace/mode/markdown");
           ))

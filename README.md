@@ -1,4 +1,6 @@
-# Redmine Ace Editor plugin
+# Redmine [Ace Editor](https://ace.c9.io/) plugin
+
+![demo](doc/ace_editor_demo.png)
 
 ## Features
 
@@ -13,7 +15,7 @@
 
 ## Third-party libraries
 
-* ace editor: Copyright (c) 2010, Ajax.org B.V.  [License](assets/javascripts/ace/LICENSE)
+* [ace editor](https://ace.c9.io/): Copyright (c) 2010, Ajax.org B.V.  [License](assets/javascripts/ace/LICENSE)
 
 ## License
 
