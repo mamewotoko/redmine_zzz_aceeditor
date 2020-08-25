@@ -4,7 +4,7 @@
 
 ## Features
 
-- markdown Syntax highlighting
+- markdown syntax highlighting
 - indent, indent-region
 - isearch
 - and more
@@ -12,6 +12,14 @@
 ## TODO
 
 - test plugin
+- add user preference to switch keybindings
+  - emacs
+  - vim
+  - VSCode?
+  - textarea??
+
+## Reference
+* [gjroelofs/redmine_codemirror](https://github.com/gjroelofs/redmine_codemirror)
 
 ## Third-party libraries
 
