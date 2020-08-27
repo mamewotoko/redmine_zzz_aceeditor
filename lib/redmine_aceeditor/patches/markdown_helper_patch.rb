@@ -1,6 +1,6 @@
-module RedmineAceEditor
+module RedmineAceEditorPlugin
   module Patches
-    module MarkdownHelperPatch
+    module RedmineAceEditorPatch
       def self.included(base)
         base.send(:include, InstanceMethods)
 
@@ -12,7 +12,6 @@ module RedmineAceEditor
           alias_method :wikitoolbar_for, :wikitoolbar_for_with_aceeditor
         end
       end
-
 
       module InstanceMethods
         def wikitoolbar_for_with_aceeditor(field_id, preview_url = preview_text_path)
@@ -63,6 +62,6 @@ module RedmineAceEditor
 end
 
 
-unless Redmine::WikiFormatting::Markdown::Helper.included_modules.include?(RedmineAceEditor::Patches::MarkdownHelperPatch)
-  Redmine::WikiFormatting::Markdown::Helper.send(:include, RedmineAceEditor::Patches::MarkdownHelperPatch)
+unless Redmine::WikiFormatting::Markdown::Helper.included_modules.include?(RedmineAceEditorPlugin::Patches::RedmineAceEditorPatch)
+  Redmine::WikiFormatting::Markdown::Helper.send(:include, RedmineAceEditorPlugin::Patches::RedmineAceEditorPatch)
 end
