@@ -12,11 +12,7 @@
 ## TODO
 
 - test plugin
-- add user preference to switch keybindings
-  - emacs
-  - vim
-  - VSCode?
-  - textarea??
+- add [translations](tree/master/config/locales)
 
 ## Reference
 * [gjroelofs/redmine_codemirror](https://github.com/gjroelofs/redmine_codemirror)
