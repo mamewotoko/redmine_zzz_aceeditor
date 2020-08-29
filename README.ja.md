@@ -1,29 +1,29 @@
 # Redmine [Ace Editor](https://ace.c9.io/) plugin
 
+[日本語](README.ja.md)
+
 ![demo](doc/ace_editor_demo.png)
 
-## Features
+## 機能
 
-- markdown syntax highlighting
-- indent, indent-region
-- isearch
-- and more
+Ace Editorの機能を使って、Wikiが書けます。
 
-Keybind and theme of editor is configurable with "My account" preference.
+- markdownでのシンタックスハイライト
+- インデント、選択領域のインデント
+- インクリメンタルサーチ
+- などなど
 
-## TODO
+エディタのキーバインド、テーマは「個人設定」で変更可能です。
+AceEditorのキーバインドの詳細はこちらを参照してください。 [Emacs](https://github.com/ajaxorg/ace/blob/master/lib/ace/keyboard/emacs.js#L345-L419), [vim](https://github.com/ajaxorg/ace/blob/master/lib/ace/keyboard/emacs.js#L345-L419)
 
-- test plugin
-- add [translations](tree/master/config/locales)
-
-## Reference
+## 参考
 * [gjroelofs/redmine_codemirror](https://github.com/gjroelofs/redmine_codemirror)
 
-## Third-party libraries
+## Third-partyライブラリ
 
-* [ace editor](https://ace.c9.io/): Copyright (c) 2010, Ajax.org B.V.  [License](assets/javascripts/ace/LICENSE)
+- [ace editor](https://ace.c9.io/): Copyright (c) 2010, Ajax.org B.V.  [License](assets/javascriptsace/LICENSE)
 
-## License
+## ライセンス
 
 ```
 Copyright (c) 2020 Takashi Masuyama. All rights reserved.
