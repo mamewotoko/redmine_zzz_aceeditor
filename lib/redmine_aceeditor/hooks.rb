@@ -88,13 +88,13 @@ module RedmineAceEditorPlugin
         <option value="sublime" #{sublime_selected}>sublime</option>
 </select></p>
       }
-      s << %q{
+      s << %{
         <p>
         <label for="pref_aceeditor_theme">#{l(:aceeditor_theme)}</label>
         <select name="pref[aceeditor_theme]" id="pref_aceeditor_theme">
       }
       s << tlist.join("\n")
-      s << %q{
+      s << %{
       </select></p>
       }
       return s
