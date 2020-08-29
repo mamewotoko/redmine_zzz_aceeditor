@@ -19,6 +19,15 @@ module RedmineAceEditorPlugin
           heads_for_aceeditor
 
           url = "#{Redmine::Utils.relative_url_root}/help/#{current_language.to_s.downcase}/wiki_syntax.html"
+          keybind = User.current.aceeditor_preference[:keybind]
+          if keybind.nil? or keybind == ""
+            keybind = "emacs"
+          end
+
+          theme = User.current.aceeditor_preference[:theme]
+          if theme.nil? or theme == ""
+            theme= "twilight"
+          end
 
           # wikitoolbar_for_without_codemirror(field_id) +
           javascript_tag(%(
@@ -34,9 +43,8 @@ module RedmineAceEditorPlugin
           editor.getSession().on('change', function(){
             textarea.val(editor.getSession().getValue());
             });
-//              var editor = ace.edit("#{field_id}");
-//            editor.setTheme("ace/theme/twilight");
-            editor.setKeyboardHandler("ace/keyboard/emacs");
+            editor.setTheme("ace/theme/#{theme}");
+            editor.setKeyboardHandler("ace/keyboard/#{keybind}");
             editor.session.setMode("ace/mode/markdown");
           ))
         end
