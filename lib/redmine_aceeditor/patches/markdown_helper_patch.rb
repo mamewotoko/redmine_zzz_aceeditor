@@ -46,6 +46,8 @@ module RedmineAceEditorPlugin
             editor.setTheme("ace/theme/#{theme}");
             editor.setKeyboardHandler("ace/keyboard/#{keybind}");
             editor.session.setMode("ace/mode/markdown");
+            editor.session.setTabSize(4);
+            editor.session.setUseSoftTabs(true);
           ))
         end
 
@@ -53,11 +55,11 @@ module RedmineAceEditorPlugin
           unless @heads_for_codemirror_included
             content_for :header_tags do
               javascript_include_tag("ace", :plugin => 'redmine_aceeditor') +
-              javascript_include_tag("textarea-as-ace-editor.min", :plugin => 'redmine_aceeditor') +
-              javascript_include_tag("mode-markdown", :plugin => 'redmine_aceeditor') +
-              javascript_include_tag("ext-static_highlight", :plugin => 'redmine_aceeditor') +
-#              javascript_include_tag("jstoolbar/lang/jstoolbar-#{current_language.to_s.downcase}") +
-              stylesheet_link_tag('jstoolbar')
+                javascript_include_tag("textarea-as-ace-editor.min", :plugin => 'redmine_aceeditor') +
+                javascript_include_tag("mode-markdown", :plugin => 'redmine_aceeditor') +
+                javascript_include_tag("ext-static_highlight", :plugin => 'redmine_aceeditor')
+              # + javascript_include_tag("jstoolbar/lang/jstoolbar-#{current_language.to_s.downcase}")
+              # + stylesheet_link_tag('jstoolbar')
             end
             @heads_for_codemirror_included = true
           end
