@@ -80,7 +80,7 @@ module RedmineAceEditorPlugin
       # TODO: use label to translate message
       s =  %{
         <p>
-        <label for="pref_aceeditor_keybind">エディタのキーバインド</label>
+        <label for="pref_aceeditor_keybind">#{l(:aceeditor_keybind)}</label>
         <select name="pref[aceeditor_keybind]" id="pref_aceeditor_keybind">
         <option value="emacs" #{emacs_selected}>emacs</option>
         <option value="vim" #{vim_selected}>vim</option>
@@ -90,7 +90,7 @@ module RedmineAceEditorPlugin
       }
       s << %q{
         <p>
-        <label for="pref_aceeditor_theme">エディタのテーマ</label>
+        <label for="pref_aceeditor_theme">#{l(:aceeditor_theme)}</label>
         <select name="pref[aceeditor_theme]" id="pref_aceeditor_theme">
       }
       s << tlist.join("\n")

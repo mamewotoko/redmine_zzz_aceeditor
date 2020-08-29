@@ -62,9 +62,7 @@ module RedmineAceEditorPlugin
             @heads_for_codemirror_included = true
           end
         end
-
       end
-
     end
   end
 end
