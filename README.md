@@ -4,9 +4,16 @@
 
 ## Features
 
+### Emacs keybinding
 - markdown syntax highlighting
 - indent, indent-region
 - isearch
+- replace
+- and more
+
+### Vim keybinding
+- replace
+- `:wq` works! (save and exit editing)
 - and more
 
 Keybind and theme of editor is configurable with "My account" preference.
