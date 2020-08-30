@@ -14,7 +14,8 @@ Keybind and theme of editor is configurable with "My account" preference.
 ## TODO
 
 - test plugin
-- add [translations](tree/master/config/locales)
+- add option to use disable aceeditor and use the original textarea
+- add [translations](https://github.com/mamewotoko/redmine_aceeditor/tree/master/config/locales)
 - add toolbar of redmine wiki
   - preview
 - support pandoc format (markdown)
