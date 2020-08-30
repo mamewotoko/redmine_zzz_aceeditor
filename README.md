@@ -16,6 +16,8 @@ Keybind and theme of editor is configurable with "My account" preference.
 - test plugin
 - add [translations](tree/master/config/locales)
 - add toolbar of redmine wiki
+  - preview
+- support pandoc format (markdown)
 
 ## Reference
 * [gjroelofs/redmine_codemirror](https://github.com/gjroelofs/redmine_codemirror)
