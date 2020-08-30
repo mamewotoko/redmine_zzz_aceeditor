@@ -21,7 +21,12 @@ Keybind and theme of editor is configurable with "My account" preference.
 ## TODO
 
 - test plugin
+  - ipad
+  - android
+  - windows
+  - mac
 - add option to use disable aceeditor and use the original textarea
+- copy text from clipboard using yank command (assigned as C-y in emacs binding)
 - add [translations](https://github.com/mamewotoko/redmine_aceeditor/tree/master/config/locales)
 - add toolbar of redmine wiki
   - preview
