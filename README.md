@@ -1,6 +1,6 @@
 # Redmine [Ace Editor](https://ace.c9.io/) plugin
 
-![demo](doc/ace_editor_demo.png)
+[![demo](doc/ace_editor_demo.png)](https://redmine3-backlogs.duckdns.org/redmine4/projects/public_project/issues/new)
 
 ## Features
 
