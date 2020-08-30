@@ -21,6 +21,7 @@ Keybind and theme of editor is configurable with "My account" preference.
 
 ## Reference
 * [gjroelofs/redmine_codemirror](https://github.com/gjroelofs/redmine_codemirror)
+* [Edit with Emacs](https://chrome.google.com/webstore/detail/edit-with-emacs/ljobjlafonikaiipfkggjbhkghgicgoh)
 
 ## Third-party libraries
 
