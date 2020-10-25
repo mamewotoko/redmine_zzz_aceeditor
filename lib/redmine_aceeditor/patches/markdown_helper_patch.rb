@@ -29,20 +29,31 @@ module RedmineAceEditorPlugin
             theme= "twilight"
           end
 
-          # wikitoolbar_for_without_codemirror(field_id) +
+          wikitoolbar_for_without_codemirror(field_id) +
           javascript_tag(%(
           var textarea = $('##{field_id}');
           var div = $('<div></div>');
-          div.css({width: '90%', height: '400px'});
+          div.css({width: '98%', height: '400px'});
           div.attr('id', '#{field_id}_ace');
           textarea.after(div);
           textarea.hide();
           var editor = ace.edit("#{field_id}_ace", {mode: "ace/mode/markdown"});
+          //precondition: only one aceeditor exists in redmine page
+          $("a.tab-preview").on("click", function(event){
+              div.hide();
+              });
+          $("a.tab-edit").on("click", function(event){
+              div.display();
+              });
           editor.getSession().setValue(textarea.val());
           editor.renderer.setShowGutter(true);
           editor.getSession().on('change', function(){
             textarea.val(editor.getSession().getValue());
             });
+            //sync with textarea when toolbar button pressed
+//            textarea.addEventListener('change', function(event){
+//                   editor.getSession().setValue(textarea.val());
+//            });
             editor.setTheme("ace/theme/#{theme}");
             editor.setKeyboardHandler("ace/keyboard/#{keybind}");
             editor.session.setMode("ace/mode/markdown");
