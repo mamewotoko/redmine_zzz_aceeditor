@@ -51,6 +51,14 @@ module RedmineAceEditorPlugin
               editor.session.setMode("ace/mode/markdown");
               editor.session.setTabSize(4);
               editor.session.setUseSoftTabs(true);
+
+              var base = textarea.parent().parent();
+              base.find("a.tab-preview").on("click", function(event){
+                  div.hide();
+              });
+              base.find ("a.tab-edit").on("click", function(event){
+                  div.show();
+              });
             })();
           ))
         end
