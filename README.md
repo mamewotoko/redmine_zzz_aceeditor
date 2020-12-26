@@ -1,19 +1,12 @@
 # Redmine [Ace Editor](https://ace.c9.io/) plugin
 
-[![demo](doc/ace_editor_demo.png)](https://redmine3-backlogs.duckdns.org/redmine4/projects/public_project/issues/new)
+![demo](doc/ace_editor_demo.png)
 
 ## Features
 
-### Emacs keybinding
 - markdown syntax highlighting
 - indent, indent-region
 - isearch
-- replace
-- and more
-
-### Vim keybinding
-- replace
-- `:wq` works! (save and exit editing)
 - and more
 
 Keybind and theme of editor is configurable with "My account" preference.
@@ -21,20 +14,11 @@ Keybind and theme of editor is configurable with "My account" preference.
 ## TODO
 
 - test plugin
-  - ipad
-  - android
-  - windows
-  - mac
-- add option to use disable aceeditor and use the original textarea
-- copy text from clipboard using yank command (assigned as C-y in emacs binding)
-- add [translations](https://github.com/mamewotoko/redmine_aceeditor/tree/master/config/locales)
+- add [translations](tree/master/config/locales)
 - add toolbar of redmine wiki
-  - preview
-- support pandoc format (markdown)
 
 ## Reference
 * [gjroelofs/redmine_codemirror](https://github.com/gjroelofs/redmine_codemirror)
-* [Edit with Emacs](https://chrome.google.com/webstore/detail/edit-with-emacs/ljobjlafonikaiipfkggjbhkghgicgoh)
 
 ## Third-party libraries
 
