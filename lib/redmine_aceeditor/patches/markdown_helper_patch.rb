@@ -53,6 +53,8 @@ module RedmineAceEditorPlugin
               editor.session.setUseSoftTabs(true);
 
               var base = textarea.parent().parent();
+              //hide toolbar buttons
+              base.find("div.jstElements").hide();
               base.find("a.tab-preview").on("click", function(event){
                   div.hide();
               });
