@@ -66,16 +66,16 @@ module RedmineAceEditorPlugin
         end
 
         def heads_for_aceeditor
-          unless @heads_for_codemirror_included
+          unless @heads_for_aceeditor_included
             content_for :header_tags do
-              javascript_include_tag("ace", :plugin => 'redmine_aceeditor') +
-              #  javascript_include_tag("textarea-as-ace-editor.min", :plugin => 'redmine_aceeditor') +
-                javascript_include_tag("mode-markdown", :plugin => 'redmine_aceeditor')
+              javascript_include_tag("ace", :plugin => 'redmine_aceeditor')
+              # + javascript_include_tag("textarea-as-ace-editor.min", :plugin => 'redmine_aceeditor') 
+               + javascript_include_tag("mode-markdown", :plugin => 'redmine_aceeditor')
                + javascript_include_tag("ext-static_highlight", :plugin => 'redmine_aceeditor')
                #+ javascript_include_tag("jstoolbar/lang/jstoolbar-#{current_language.to_s.downcase}")
                #+ stylesheet_link_tag('jstoolbar')
             end
-            @heads_for_codemirror_included = true
+            @heads_for_aceeditor_included = true
           end
         end
       end
