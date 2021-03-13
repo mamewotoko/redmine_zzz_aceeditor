@@ -15,13 +15,18 @@ module RedmineAceEditorPlugin
 
       module InstanceMethods
         def wikitoolbar_for_with_aceeditor(field_id, preview_url = preview_text_path)
-
+          keybind = User.current.aceeditor_preference[:keybind]
+          if keybind == "textarea"
+            # TODO: really?
+            return
+          end
+          
           heads_for_aceeditor
 
           url = "#{Redmine::Utils.relative_url_root}/help/#{current_language.to_s.downcase}/wiki_syntax.html"
           # result = javascript_tag("var wikiToolbar = new jsToolBar(document.getElementById('#{field_id}')); wikiToolbar.setHelpLink('#{escape_javascript url}'); wikiToolbar.setPreviewUrl('#{escape_javascript preview_url}'); wikiToolbar.draw();")
           result = ""
-          keybind = User.current.aceeditor_preference[:keybind]
+
           if keybind.nil? or keybind == ""
             keybind = "emacs"
           end
@@ -51,6 +56,7 @@ module RedmineAceEditorPlugin
               editor.session.setMode("ace/mode/markdown");
               editor.session.setTabSize(4);
               editor.session.setUseSoftTabs(true);
+              editor.setOption("showInvisibles", true);
 
               var base = textarea.parent().parent();
               //hide toolbar buttons
@@ -68,10 +74,10 @@ module RedmineAceEditorPlugin
         def heads_for_aceeditor
           unless @heads_for_aceeditor_included
             content_for :header_tags do
-              javascript_include_tag("ace", :plugin => 'redmine_aceeditor') +
-                javascript_include_tag("textarea-as-ace-editor.min", :plugin => 'redmine_aceeditor') +
-                javascript_include_tag("mode-markdown", :plugin => 'redmine_aceeditor') +
-                javascript_include_tag("ext-static_highlight", :plugin => 'redmine_aceeditor')
+              javascript_include_tag("ace", :plugin => :redmine_zzz_aceeditor) +
+                javascript_include_tag("textarea-as-ace-editor.min", :plugin => :redmine_zzz_aceeditor) +
+                javascript_include_tag("mode-markdown", :plugin => :redmine_zzz_aceeditor) +
+                javascript_include_tag("ext-static_highlight", :plugin => :redmine_zzz_aceeditor)
               # + javascript_include_tag("jstoolbar/lang/jstoolbar-#{current_language.to_s.downcase}")
               # + stylesheet_link_tag('jstoolbar')
             end
@@ -85,5 +91,12 @@ end
 
 
 unless Redmine::WikiFormatting::Markdown::Helper.included_modules.include?(RedmineAceEditorPlugin::Patches::RedmineAceEditorPatch)
-  Redmine::WikiFormatting::Markdown::Helper.send(:include, RedmineAceEditorPlugin::Patches::RedmineAceEditorPatch)
+   Redmine::WikiFormatting::Markdown::Helper.send(:include, RedmineAceEditorPlugin::Patches::RedmineAceEditorPatch)
+end
+
+# TODO: control plugin load order more specific way (e.g. list plugins in config.pluguins)
+if  Redmine::Plugin.installed? :redmine_pandoc_formatter
+  unless RedminePandocFormatter::Helper.included_modules.include?(RedmineAceEditorPlugin::Patches::RedmineAceEditorPatch)
+    RedminePandocFormatter::Helper.send(:include, RedmineAceEditorPlugin::Patches::RedmineAceEditorPatch)
+  end
 end

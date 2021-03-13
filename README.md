@@ -1,4 +1,4 @@
-# Redmine [Ace Editor](https://ace.c9.io/) plugin
+# redmine_zzz_aceeditor: Redmine [Ace Editor](https://ace.c9.io/) plugin 
 
 ![demo](doc/ace_editor_demo.png)
 

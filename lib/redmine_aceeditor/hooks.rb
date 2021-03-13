@@ -23,6 +23,8 @@ module RedmineAceEditorPlugin
         vscode_selected = %q[selected="selected" ]
       when "sublime" then
         sublime_selected = %q[selected="selected" ]
+      when "textarea" then
+        textarea_selected = %q[selected="selected" ]
       else
         # emacs and other value(initial)
         emacs_selected = %q[selected="selected" ]
@@ -86,6 +88,7 @@ module RedmineAceEditorPlugin
         <option value="vim" #{vim_selected}>vim</option>
         <option value="vscode" #{vscode_selected}>vscode</option>
         <option value="sublime" #{sublime_selected}>sublime</option>
+        <option value="textarea" #{textarea_selected}>textarea</option>
 </select></p>
       }
       s << %{
