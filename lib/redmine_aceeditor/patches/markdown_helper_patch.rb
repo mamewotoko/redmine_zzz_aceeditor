@@ -33,7 +33,7 @@ module RedmineAceEditorPlugin
 
           theme = User.current.aceeditor_preference[:theme]
           if theme.nil? or theme == ""
-            theme= "twilight"
+            theme= "chrome"
           end
 
           wikitoolbar_for_without_aceeditor(field_id) +
@@ -94,9 +94,20 @@ unless Redmine::WikiFormatting::Markdown::Helper.included_modules.include?(Redmi
    Redmine::WikiFormatting::Markdown::Helper.send(:include, RedmineAceEditorPlugin::Patches::RedmineAceEditorPatch)
 end
 
+unless Redmine::WikiFormatting::Textile::Helper.included_modules.include?(RedmineAceEditorPlugin::Patches::RedmineAceEditorPatch)
+   Redmine::WikiFormatting::Textile::Helper.send(:include, RedmineAceEditorPlugin::Patches::RedmineAceEditorPatch)
+end
+
 # TODO: control plugin load order more specific way (e.g. list plugins in config.pluguins)
-if  Redmine::Plugin.installed? :redmine_pandoc_formatter
+if Redmine::Plugin.installed? :redmine_pandoc_formatter
   unless RedminePandocFormatter::Helper.included_modules.include?(RedmineAceEditorPlugin::Patches::RedmineAceEditorPatch)
     RedminePandocFormatter::Helper.send(:include, RedmineAceEditorPlugin::Patches::RedmineAceEditorPatch)
   end
 end
+
+#
+# if Redmine::Plugin.installed? :redmine_restructuredtext_formatter
+#   unless RedmineRestructuredtextFormatter::Helper.included_modules.include?(RedmineAceEditorPlugin::Patches::RedmineAceEditorPatch)
+#     RedmineRestructuredtextFormatter::Helper.send(:include, RedmineAceEditorPlugin::Patches::RedmineAceEditorPatch)
+#   end
+# end
