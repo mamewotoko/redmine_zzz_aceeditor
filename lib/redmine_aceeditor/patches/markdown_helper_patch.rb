@@ -53,6 +53,13 @@ module RedmineAceEditorPlugin
               });
               editor.setTheme("ace/theme/#{theme}");
               editor.setKeyboardHandler("ace/keyboard/#{keybind}");
+              // Ctrl-h: backspace
+              editor.commands.addCommand({
+                 name: "myctrlh",
+                 bindKey: { win: "Ctrl-h", mac: "Ctrl-h"},
+                 exec: function(){ editor.command.exec("backspace", editor) }
+              });
+              //TODO:modify mode, support textile
               editor.session.setMode("ace/mode/markdown");
               editor.session.setTabSize(4);
               editor.session.setUseSoftTabs(true);
