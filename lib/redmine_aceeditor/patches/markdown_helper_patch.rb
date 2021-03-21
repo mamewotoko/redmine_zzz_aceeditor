@@ -28,7 +28,7 @@ module RedmineAceEditorPlugin
           result = ""
 
           if keybind.nil? or keybind == ""
-            keybind = "emacs"
+            keybind = "textarea"
           end
 
           theme = User.current.aceeditor_preference[:theme]
