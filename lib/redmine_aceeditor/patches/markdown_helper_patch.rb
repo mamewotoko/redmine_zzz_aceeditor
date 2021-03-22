@@ -54,11 +54,68 @@ module RedmineAceEditorPlugin
               editor.setTheme("ace/theme/#{theme}");
               editor.setKeyboardHandler("ace/keyboard/#{keybind}");
               // Ctrl-h: backspace
-              editor.commands.addCommand({
-                 name: "myctrlh",
-                 bindKey: { win: "Ctrl-h", mac: "Ctrl-h"},
-                 exec: function(){ editor.command.exec("backspace", editor) }
+              // editor.commands.addCommand({
+              //    name: "myctrlh",
+              //    bindKey: { win: "Ctrl-h", mac: "Ctrl-h"},
+              //    exec: function(){ editor.command.exec("backspace", editor, null) }
+              // });
+              //yank from clipboard
+              // editor.commands.addCommand({
+              //    name: "yankfromclipboard",
+              //    bindKey: { win: "Ctrl-y", mac: "Ctrl-y"},
+              //    exec: function(){ 
+              //      //TOOD: always use clipboard
+              //      navigator.clipboard.readText().then(function(text) {
+              //          editor.execCommand("paste", text)
+              //      });
+              //    }
+              // });
+              editor.on("copy", function(e){
+                 navigator.clipboard.writeText(e.text);
+                 return true;
               });
+              // editor.on("paste", function(e){
+              //   //Cmd-v, Ctrl-y -> paste
+              //   console.log("paste");
+              //   console.log(e);
+
+              //   if(navigator.clipboard){
+              //       navigator.clipboard.readText()
+              //          .then(function(text){
+              //                    editor.session.insert(editor.getCursorPosition(), text);
+              //                },
+              //                function(){
+              //                    editor.session.insert(editor.getCursorPosition(), e.text);
+              //                });
+              //       return true;
+              //   }
+              //   return false;
+              // })
+              //kill-region with clipboard
+              editor.commands.addCommand({
+                 name: "kill-region",
+                 bindKey: { win: "Ctrl-w", mac: "Ctrl-w"},
+                 exec: function(){ 
+                   //TOOD: always use clipboard
+                   var text = editor.getCopyText();
+                   editor.execCommand("cut");
+                   console.log("kill-region cut");
+                   navigator.clipboard.writeText(text);
+                 }
+              });
+              //copy-region-as-kill with clipboard
+              editor.commands.addCommand({
+                 name: "kill-region-as-kill",
+                 bindKey: { win: "Alt-w", mac: "Alt-w"},
+                 exec: function(){ 
+                   //TOOD: always use clipboard
+                   var text = editor.getCopyText();
+                   editor.execCommand("copy");
+                   console.log("copy-region-as-kill copy");
+                   navigator.clipboard.writeText(text);
+                 }
+              });
+
               //TODO:modify mode, support textile
               editor.session.setMode("ace/mode/markdown");
               editor.session.setTabSize(4);
