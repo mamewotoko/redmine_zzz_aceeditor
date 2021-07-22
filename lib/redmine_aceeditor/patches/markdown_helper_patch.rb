@@ -15,15 +15,11 @@ module RedmineAceEditorPlugin
 
       module InstanceMethods
         def wikitoolbar_for_with_aceeditor(field_id, preview_url = preview_text_path)
-          keybind = User.current.aceeditor_preference[:keybind]
-          if keybind == "textarea"
-            # TODO: really?
-            return
-          end
-          
           heads_for_aceeditor
-
-          url = "#{Redmine::Utils.relative_url_root}/help/#{current_language.to_s.downcase}/wiki_syntax.html"
+          
+          keybind = User.current.aceeditor_preference[:keybind]
+          
+          # url = "#{Redmine::Utils.relative_url_root}/help/#{current_language.to_s.downcase}/wiki_syntax.html"
           # result = javascript_tag("var wikiToolbar = new jsToolBar(document.getElementById('#{field_id}')); wikiToolbar.setHelpLink('#{escape_javascript url}'); wikiToolbar.setPreviewUrl('#{escape_javascript preview_url}'); wikiToolbar.draw();")
           result = ""
 
@@ -39,6 +35,9 @@ module RedmineAceEditorPlugin
           wikitoolbar_for_without_aceeditor(field_id) +
           javascript_tag(%(
             (function(){
+              if("#{keybind}" == "textarea"){
+                  return;
+              }
               var textarea = $('##{field_id}');
               var div = $('<div></div>');
               div.css({width: '100%', height: '400px'});
