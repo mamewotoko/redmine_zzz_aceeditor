@@ -52,12 +52,12 @@ module RedmineAceEditorPlugin
               });
               editor.setTheme("ace/theme/#{theme}");
               editor.setKeyboardHandler("ace/keyboard/#{keybind}");
-              // Ctrl-h: backspace
-              // editor.commands.addCommand({
-              //    name: "myctrlh",
-              //    bindKey: { win: "Ctrl-h", mac: "Ctrl-h"},
-              //    exec: function(){ editor.command.exec("backspace", editor, null) }
-              // });
+              //Key Support
+              //Ctrl-k: clipboard is not supported
+              //Ctrl-y: clipboard is not supported
+              //Ctrl-w: supported
+              //Alt-w: supported
+
               //yank from clipboard
               // editor.commands.addCommand({
               //    name: "yankfromclipboard",
@@ -104,8 +104,8 @@ module RedmineAceEditorPlugin
               });
               //copy-region-as-kill with clipboard
               editor.commands.addCommand({
-                 name: "kill-region-as-kill",
-                 bindKey: { win: "Alt-w", mac: "Alt-w"},
+                 name: "copy-region-as-kill",
+                 bindKey: { win: "Ctrl-w", mac: "Ctrl-w"},
                  exec: function(){ 
                    //TOOD: always use clipboard
                    var text = editor.getCopyText();
@@ -114,6 +114,18 @@ module RedmineAceEditorPlugin
                    navigator.clipboard.writeText(text);
                  }
               });
+              //kill line
+              //editor.commands.addCommand({
+              //   name: "kill-line",
+              //   bindKey: { win: "Ctrl-k", mac: "Ctrl-k"},
+              //   exec: function(){ 
+              //     //TOOD: always use clipboard
+              //     var text = editor.getCopyText();
+              //     editor.execCommand("copy");
+              //     console.log("copy-region-as-kill copy");
+              //     navigator.clipboard.writeText(text);
+              //   }
+              //});
 
               //TODO:modify mode, support textile
               editor.session.setMode("ace/mode/markdown");
