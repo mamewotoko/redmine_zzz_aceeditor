@@ -14,6 +14,8 @@ Keybind and theme of editor is configurable with "My account" preference.
 ## TODO
 
 - test plugin
+- write supported keybinds
+	- emacs
 - add [translations](tree/master/config/locales)
 - add toolbar of redmine wiki
 
