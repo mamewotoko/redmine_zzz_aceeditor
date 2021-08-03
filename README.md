@@ -16,16 +16,17 @@ Keybind and theme of editor is configurable with "My account" preference.
 - test plugin
 - write supported keybinds
 	- emacs
+	- vim
 - add [translations](tree/master/config/locales)
 - add toolbar of redmine wiki
 
-## Reference
-* [gjroelofs/redmine_codemirror](https://github.com/gjroelofs/redmine_codemirror)
-
 ## Third-party libraries
 
-* [ace editor](https://ace.c9.io/): Copyright (c) 2010, Ajax.org B.V.  [License](assets/javascripts/ace/LICENSE)
+- [ace editor](https://ace.c9.io/): Copyright (c) 2010, Ajax.org B.V.  [License](assets/javascripts/ace/LICENSE)
 
+## Reference
+- [gjroelofs/redmine_codemirror](https://github.com/gjroelofs/redmine_codemirror)
+	
 ## License
 
 ```
@@ -45,6 +46,5 @@ limitations under the License.
 ```
 
 ----
-Takashi Masuyama < mamewotoko@gmail.com >
-
+Takashi Masuyama < mamewotoko@gmail.com >  
 https://mamewo.ddo.jp/
