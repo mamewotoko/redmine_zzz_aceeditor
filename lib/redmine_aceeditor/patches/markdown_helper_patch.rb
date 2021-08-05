@@ -58,6 +58,11 @@ module RedmineAceEditorPlugin
               //Ctrl-w: supported
               //Alt-w: supported
 
+              editor.on("copy", function(e){
+                 navigator.clipboard.writeText(e.text);
+                 return true;
+              });
+
               //yank from clipboard
               // editor.commands.addCommand({
               //    name: "yankfromclipboard",
@@ -69,10 +74,6 @@ module RedmineAceEditorPlugin
               //      });
               //    }
               // });
-              editor.on("copy", function(e){
-                 navigator.clipboard.writeText(e.text);
-                 return true;
-              });
               // editor.on("paste", function(e){
               //   //Cmd-v, Ctrl-y -> paste
               //   console.log("paste");
@@ -91,41 +92,48 @@ module RedmineAceEditorPlugin
               //   return false;
               // })
               //kill-region with clipboard
-              editor.commands.addCommand({
-                 name: "kill-region",
-                 bindKey: { win: "Ctrl-w", mac: "Ctrl-w"},
-                 exec: function(){ 
-                   //TOOD: always use clipboard
-                   var text = editor.getCopyText();
-                   editor.execCommand("cut");
-                   console.log("kill-region cut");
-                   navigator.clipboard.writeText(text);
-                 }
-              });
-              //copy-region-as-kill with clipboard
-              editor.commands.addCommand({
-                 name: "copy-region-as-kill",
-                 bindKey: { win: "Ctrl-w", mac: "Ctrl-w"},
-                 exec: function(){ 
-                   //TOOD: always use clipboard
-                   var text = editor.getCopyText();
-                   editor.execCommand("copy");
-                   console.log("copy-region-as-kill copy");
-                   navigator.clipboard.writeText(text);
-                 }
-              });
-              //kill line
-              //editor.commands.addCommand({
-              //   name: "kill-line",
-              //   bindKey: { win: "Ctrl-k", mac: "Ctrl-k"},
-              //   exec: function(){ 
-              //     //TOOD: always use clipboard
-              //     var text = editor.getCopyText();
-              //     editor.execCommand("copy");
-              //     console.log("copy-region-as-kill copy");
-              //     navigator.clipboard.writeText(text);
-              //   }
-              //});
+
+              if("#{keybind}" == "emacs"){
+                  editor.commands.addCommand({
+                     name: "kill-region",
+                     bindKey: { win: "Ctrl-w", mac: "Ctrl-w"},
+                     exec: function(){ 
+                       //TOOD: always use clipboard
+                       var text = editor.getCopyText();
+                       editor.execCommand("cut");
+                       console.log("kill-region cut");
+                       navigator.clipboard.writeText(text);
+                     }
+                  });
+                  //copy-region-as-kill with clipboard
+                  editor.commands.addCommand({
+                     name: "copy-region-as-kill",
+                     bindKey: { win: "Ctrl-w", mac: "Ctrl-w"},
+                     exec: function(){ 
+                       //TOOD: always use clipboard
+                       var text = editor.getCopyText();
+                       editor.execCommand("copy");
+                       console.log("copy-region-as-kill copy");
+                       navigator.clipboard.writeText(text);
+                     }
+                  });
+                  //kill line
+                  //editor.commands.addCommand({
+                  //   name: "kill-line",
+                  //   bindKey: { win: "Ctrl-k", mac: "Ctrl-k"},
+                  //   exec: function(){ 
+                  //     //TOOD: always use clipboard
+                  //     var text = editor.getCopyText();
+                  //     editor.execCommand("copy");
+                  //     console.log("copy-region-as-kill copy");
+                  //     navigator.clipboard.writeText(text);
+                  //   }
+                  //});
+              }
+              //else if("#{keybind}" == "vim"){
+                  //ctrl-m -> enter
+              //    editor.map(
+              //}
 
               //TODO:modify mode, support textile
               editor.session.setMode("ace/mode/markdown");

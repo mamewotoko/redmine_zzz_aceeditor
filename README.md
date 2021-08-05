@@ -26,7 +26,7 @@ Keybind and theme of editor is configurable with "My account" preference.
 
 ## Reference
 - [gjroelofs/redmine_codemirror](https://github.com/gjroelofs/redmine_codemirror)
-	
+
 ## License
 
 ```
