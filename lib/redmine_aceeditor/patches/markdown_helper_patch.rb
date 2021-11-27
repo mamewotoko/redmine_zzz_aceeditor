@@ -16,9 +16,9 @@ module RedmineAceEditorPlugin
       module InstanceMethods
         def wikitoolbar_for_with_aceeditor(field_id, preview_url = preview_text_path)
           heads_for_aceeditor
-          
+
           keybind = User.current.aceeditor_preference[:keybind]
-          
+
           # url = "#{Redmine::Utils.relative_url_root}/help/#{current_language.to_s.downcase}/wiki_syntax.html"
           # result = javascript_tag("var wikiToolbar = new jsToolBar(document.getElementById('#{field_id}')); wikiToolbar.setHelpLink('#{escape_javascript url}'); wikiToolbar.setPreviewUrl('#{escape_javascript preview_url}'); wikiToolbar.draw();")
           result = ""
@@ -67,7 +67,7 @@ module RedmineAceEditorPlugin
               // editor.commands.addCommand({
               //    name: "yankfromclipboard",
               //    bindKey: { win: "Ctrl-y", mac: "Ctrl-y"},
-              //    exec: function(){ 
+              //    exec: function(){
               //      //TOOD: always use clipboard
               //      navigator.clipboard.readText().then(function(text) {
               //          editor.execCommand("paste", text)
@@ -97,7 +97,7 @@ module RedmineAceEditorPlugin
                   editor.commands.addCommand({
                      name: "kill-region",
                      bindKey: { win: "Ctrl-w", mac: "Ctrl-w"},
-                     exec: function(){ 
+                     exec: function(){
                        //TOOD: always use clipboard
                        var text = editor.getCopyText();
                        editor.execCommand("cut");
@@ -109,7 +109,7 @@ module RedmineAceEditorPlugin
                   editor.commands.addCommand({
                      name: "copy-region-as-kill",
                      bindKey: { win: "Ctrl-w", mac: "Ctrl-w"},
-                     exec: function(){ 
+                     exec: function(){
                        //TOOD: always use clipboard
                        var text = editor.getCopyText();
                        editor.execCommand("copy");
@@ -121,7 +121,7 @@ module RedmineAceEditorPlugin
                   //editor.commands.addCommand({
                   //   name: "kill-line",
                   //   bindKey: { win: "Ctrl-k", mac: "Ctrl-k"},
-                  //   exec: function(){ 
+                  //   exec: function(){
                   //     //TOOD: always use clipboard
                   //     var text = editor.getCopyText();
                   //     editor.execCommand("copy");
@@ -151,7 +151,7 @@ module RedmineAceEditorPlugin
                   div.show();
               });
             })();
-          ))
+          )))
         end
 
         def heads_for_aceeditor
