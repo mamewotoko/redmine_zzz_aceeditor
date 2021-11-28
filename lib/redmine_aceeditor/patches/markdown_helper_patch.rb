@@ -16,9 +16,9 @@ module RedmineAceEditorPlugin
       module InstanceMethods
         def wikitoolbar_for_with_aceeditor(field_id, preview_url = preview_text_path)
           heads_for_aceeditor
-
+          
           keybind = User.current.aceeditor_preference[:keybind]
-
+          
           # url = "#{Redmine::Utils.relative_url_root}/help/#{current_language.to_s.downcase}/wiki_syntax.html"
           # result = javascript_tag("var wikiToolbar = new jsToolBar(document.getElementById('#{field_id}')); wikiToolbar.setHelpLink('#{escape_javascript url}'); wikiToolbar.setPreviewUrl('#{escape_javascript preview_url}'); wikiToolbar.draw();")
           result = ""
@@ -52,28 +52,27 @@ module RedmineAceEditorPlugin
               });
               editor.setTheme("ace/theme/#{theme}");
               editor.setKeyboardHandler("ace/keyboard/#{keybind}");
-              //Key Support
-              //Ctrl-k: clipboard is not supported
-              //Ctrl-y: clipboard is not supported
-              //Ctrl-w: supported
-              //Alt-w: supported
-
-              editor.on("copy", function(e){
-                 navigator.clipboard.writeText(e.text);
-                 return true;
-              });
-
+              // Ctrl-h: backspace
+              // editor.commands.addCommand({
+              //    name: "myctrlh",
+              //    bindKey: { win: "Ctrl-h", mac: "Ctrl-h"},
+              //    exec: function(){ editor.command.exec("backspace", editor, null) }
+              // });
               //yank from clipboard
               // editor.commands.addCommand({
               //    name: "yankfromclipboard",
               //    bindKey: { win: "Ctrl-y", mac: "Ctrl-y"},
-              //    exec: function(){
+              //    exec: function(){ 
               //      //TOOD: always use clipboard
               //      navigator.clipboard.readText().then(function(text) {
               //          editor.execCommand("paste", text)
               //      });
               //    }
               // });
+              editor.on("copy", function(e){
+                 navigator.clipboard.writeText(e.text);
+                 return true;
+              });
               // editor.on("paste", function(e){
               //   //Cmd-v, Ctrl-y -> paste
               //   console.log("paste");
@@ -92,48 +91,29 @@ module RedmineAceEditorPlugin
               //   return false;
               // })
               //kill-region with clipboard
-
-              if("#{keybind}" == "emacs"){
-                  editor.commands.addCommand({
-                     name: "kill-region",
-                     bindKey: { win: "Ctrl-w", mac: "Ctrl-w"},
-                     exec: function(){
-                       //TOOD: always use clipboard
-                       var text = editor.getCopyText();
-                       editor.execCommand("cut");
-                       console.log("kill-region cut");
-                       navigator.clipboard.writeText(text);
-                     }
-                  });
-                  //copy-region-as-kill with clipboard
-                  editor.commands.addCommand({
-                     name: "copy-region-as-kill",
-                     bindKey: { win: "Ctrl-w", mac: "Ctrl-w"},
-                     exec: function(){
-                       //TOOD: always use clipboard
-                       var text = editor.getCopyText();
-                       editor.execCommand("copy");
-                       console.log("copy-region-as-kill copy");
-                       navigator.clipboard.writeText(text);
-                     }
-                  });
-                  //kill line
-                  //editor.commands.addCommand({
-                  //   name: "kill-line",
-                  //   bindKey: { win: "Ctrl-k", mac: "Ctrl-k"},
-                  //   exec: function(){
-                  //     //TOOD: always use clipboard
-                  //     var text = editor.getCopyText();
-                  //     editor.execCommand("copy");
-                  //     console.log("copy-region-as-kill copy");
-                  //     navigator.clipboard.writeText(text);
-                  //   }
-                  //});
-              }
-              //else if("#{keybind}" == "vim"){
-                  //ctrl-m -> enter
-              //    editor.map(
-              //}
+              editor.commands.addCommand({
+                 name: "kill-region",
+                 bindKey: { win: "Ctrl-w", mac: "Ctrl-w"},
+                 exec: function(){ 
+                   //TOOD: always use clipboard
+                   var text = editor.getCopyText();
+                   editor.execCommand("cut");
+                   console.log("kill-region cut");
+                   navigator.clipboard.writeText(text);
+                 }
+              });
+              //copy-region-as-kill with clipboard
+              editor.commands.addCommand({
+                 name: "kill-region-as-kill",
+                 bindKey: { win: "Alt-w", mac: "Alt-w"},
+                 exec: function(){ 
+                   //TOOD: always use clipboard
+                   var text = editor.getCopyText();
+                   editor.execCommand("copy");
+                   console.log("copy-region-as-kill copy");
+                   navigator.clipboard.writeText(text);
+                 }
+              });
 
               //TODO:modify mode, support textile
               editor.session.setMode("ace/mode/markdown");
@@ -151,7 +131,7 @@ module RedmineAceEditorPlugin
                   div.show();
               });
             })();
-          )))
+          ))
         end
 
         def heads_for_aceeditor
